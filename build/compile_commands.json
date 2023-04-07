@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/jacobidoko/Desktop/Test stacks/Lookin/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=c++11 -o CMakeFiles/lookin.dir/main.cpp.o -c \"/Users/jacobidoko/Desktop/Test stacks/Lookin/main.cpp\"",
+  "file": "/Users/jacobidoko/Desktop/Test stacks/Lookin/main.cpp",
+  "output": "CMakeFiles/lookin.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/jacobidoko/Desktop/Test stacks/Lookin/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=c++11 -o CMakeFiles/lookin.dir/Parser.cpp.o -c \"/Users/jacobidoko/Desktop/Test stacks/Lookin/Parser.cpp\"",
+  "file": "/Users/jacobidoko/Desktop/Test stacks/Lookin/Parser.cpp",
+  "output": "CMakeFiles/lookin.dir/Parser.cpp.o"
+}
+]
