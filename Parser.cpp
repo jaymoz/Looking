@@ -8,15 +8,12 @@ Parser::Parser(const char *url) : _url(url)
 
 Parser::~Parser(){};
 
-Parser::Parser(const Parser &other)
-{
-
-}
 
 Parser::HttpMethod Parser::getMethod() const { return this->_httpMethod; }
 
 void Parser::processUrl(void)
 {
+
     std::string method = this->_url.substr(0, _url.find(' '));
     if (method == "GET")
         this->_httpMethod = Parser::HttpMethod::GET;
@@ -30,6 +27,8 @@ void Parser::processUrl(void)
     size_t domain_index = this->_url.find("://") + 3;
     size_t path_index = this->_url.find('/', domain_index);
     size_t param_index = this->_url.find('?', path_index);
+    if (param_index == std::string::npos)
+        param_index = this->_url.length();
 
     this->_domain = this->_url.substr(domain_index, path_index - domain_index);
     this->_path = this->_url.substr(path_index, param_index - path_index);
@@ -42,9 +41,11 @@ void    Parser::setMembers(void)
 {
     size_t start = 0;
     size_t end = this->_path.find('/', start);
+    this->_members.clear();
     while (end != std::string::npos)
     {
-        this->_members.push_back(this->_path.substr(start, end -start));
+        if (!this->_path.substr(start, end -start).empty())
+            this->_members.push_back(this->_path.substr(start, end -start));
         start = end + 1;
         end = this->_path.find('/', start);
     }
@@ -77,22 +78,22 @@ void    Parser::setParam(int param_index)
 std::string Parser::getNthMember(int index)
 {
     if (index >= this->_members.size())
-        throw std::out_of_range("Index out of range");
+        throw std::out_of_range("Индекс вне диапазона");
     
     return (this->_members[index]);
 }
 
-std::map<std::string, std::string>  Parser::getParam() const
+std::multimap<std::string, std::string>  Parser::getParam(void) const
 {
     return (this->_param);
 }
 
-std::vector<std::string>    Parser::getAllMembers() const
+std::vector<std::string>    Parser::getAllMembers(void) const
 {
     return this->_members;
 }
 
-std::string     Parser::getDomain() const
+std::string     Parser::getDomain(void) const
 {
     return this->_domain;
 }
